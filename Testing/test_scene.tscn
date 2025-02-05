@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://pblew85l3xu8"]
+
+[ext_resource type="PackedScene" uid="uid://dha2pjmblwnap" path="res://Knight Player/knight_player.tscn" id="1_3vidl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_43eon"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_762ue"]
+
+[node name="Test Scene" type="Node3D"]
+
+[node name="Knight" parent="." instance=ExtResource("1_3vidl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.0185, 0)
+light_energy = 16.28
+light_size = 1000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_43eon")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, 0, 0.01, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_762ue")
